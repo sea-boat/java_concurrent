@@ -1,5 +1,7 @@
 package com.seaboat.thread;
 
+import com.seaboat.thread.jdk.AtomicReferenceFieldUpdater;
+
 public class AtomicReferenceFieldUpdaterDemo {
 
 	volatile Baoshu bs = new Baoshu();

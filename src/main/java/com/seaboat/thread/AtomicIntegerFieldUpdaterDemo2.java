@@ -1,5 +1,7 @@
 package com.seaboat.thread;
 
+import com.seaboat.thread.jdk.AtomicInteger;
+
 public class AtomicIntegerFieldUpdaterDemo2 {
 
 	public static void main(String[] args) throws InterruptedException {

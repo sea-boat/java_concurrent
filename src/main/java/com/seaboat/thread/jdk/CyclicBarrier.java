@@ -1,4 +1,4 @@
-package com.seaboat.thread;
+package com.seaboat.thread.jdk;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.TimeoutException;

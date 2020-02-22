@@ -1,4 +1,4 @@
-package com.seaboat.thread;
+package com.seaboat.thread.jdk;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

@@ -1,4 +1,4 @@
-package com.seaboat.thread;
+package com.seaboat.thread.jdk;
 
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;

@@ -1,5 +1,7 @@
 package com.seaboat.thread;
 
+import com.seaboat.thread.jdk.AtomicReference;
+
 public class AtomicReferenceDemo3 {
 	Baoshu bs = new Baoshu();
 	//将bs传入AtomicReference则不能再用bs这个引用，而是要用AtomicReference里面的引用，该引用通过get()获取

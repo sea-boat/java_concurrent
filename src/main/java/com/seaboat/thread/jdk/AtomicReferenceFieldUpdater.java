@@ -1,9 +1,8 @@
-package com.seaboat.thread;
+package com.seaboat.thread.jdk;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
-import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 
 import sun.misc.Unsafe;
@@ -39,7 +38,6 @@ public abstract class AtomicReferenceFieldUpdater<T, V> {
 		AtomicReferenceFieldUpdaterImpl(final Class<T> tclass, final Class<V> vclass,
 				final String fieldName) {
 			final Field field;
-			final Class<?> fieldClass;
 			final int modifiers;
 			try {
 				field = AccessController.doPrivileged(new PrivilegedExceptionAction<Field>() {
@@ -48,16 +46,11 @@ public abstract class AtomicReferenceFieldUpdater<T, V> {
 					}
 				});
 				modifiers = field.getModifiers();
-				fieldClass = field.getType();
-			} catch (PrivilegedActionException pae) {
-				throw new RuntimeException(pae.getException());
 			} catch (Exception ex) {
 				throw new RuntimeException(ex);
 			}
-
 			if (!Modifier.isVolatile(modifiers))
 				throw new IllegalArgumentException("Must be volatile type");
-
 			this.offset = U.objectFieldOffset(field);
 		}
 
@@ -68,6 +61,5 @@ public abstract class AtomicReferenceFieldUpdater<T, V> {
 		public final V get(T obj) {
 			return (V) U.getObjectVolatile(obj, offset);
 		}
-
 	}
 }
