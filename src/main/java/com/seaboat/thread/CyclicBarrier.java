@@ -1,10 +1,9 @@
-package com.seaboat.thread.jdk;
+package com.seaboat.thread;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import java.lang.Thread;
 
 public class CyclicBarrier {
 	private final ReentrantLock lock = new ReentrantLock();
