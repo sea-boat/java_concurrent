@@ -1,40 +1,24 @@
 package com.seaboat.thread;
 
 import java.io.IOException;
-import java.util.concurrent.Phaser;
+
+import com.seaboat.thread.jdk.Phaser;
 
 public class PhaserDemo {
 	public static void main(String[] args) throws IOException {
 
-		int repeats = 3;
-
-		Phaser phaser = new Phaser() {
-			@Override
-			protected boolean onAdvance(int phase, int registeredParties) {
-				System.out.println(
-						"---------------PHASE[" + phase + "],Parties[" + registeredParties + "] ---------------");
-				return phase + 1 >= repeats || registeredParties == 0;
-			}
-		};
-		for (int i = 0; i < 10; i++) {
+		Phaser phaser = new Phaser();
+		for (int i = 0; i < 4; i++) {
 			phaser.register();
-			new Thread(new Task3(phaser), "Thread-" + i).start();
+			new Thread(() -> {
+				System.out.println("第一阶段" + Thread.currentThread().getName() + ": 执行完任务");
+				phaser.arriveAndAwaitAdvance();
+				System.out.println("第二阶段" + Thread.currentThread().getName() + ": 执行完任务");
+				phaser.arriveAndAwaitAdvance();
+				System.out.println("第三阶段" + Thread.currentThread().getName() + ": 执行完任务");
+				phaser.arriveAndAwaitAdvance();
+			}).start();
 		}
-	}
-}
 
-class Task3 implements Runnable {
-	private final Phaser phaser;
-
-	Task3(Phaser phaser) {
-		this.phaser = phaser;
-	}
-
-	@Override
-	public void run() {
-		while (!phaser.isTerminated()) {
-			int i = phaser.arriveAndAwaitAdvance();
-			System.out.println(Thread.currentThread().getName() + ": ִ��������");
-		}
 	}
 }
