@@ -19,7 +19,7 @@ public class BankServiceWindow {
 		}
 
 		protected boolean tryRelease(int releases) {
-			if (getState() == 0)
+			if (getState() == 0 || Thread.currentThread() != this.getExclusiveOwnerThread())
 				throw new IllegalMonitorStateException();
 			setExclusiveOwnerThread(null);
 			setState(0);
