@@ -1,7 +1,6 @@
 package com.seaboat.thread.jdk;
 
 import java.lang.reflect.Field;
-
 import sun.misc.Unsafe;
 
 public class LockSupport {

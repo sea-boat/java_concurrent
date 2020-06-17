@@ -1,7 +1,8 @@
 package com.seaboat.thread;
 
 import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
+
+import com.seaboat.thread.jdk.CyclicBarrier;
 
 public class CyclicBarrierDemo {
 	static CyclicBarrier barrier = new CyclicBarrier(3);

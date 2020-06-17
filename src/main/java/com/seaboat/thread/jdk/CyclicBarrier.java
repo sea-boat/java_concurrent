@@ -4,7 +4,6 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import java.lang.Thread;
 
 public class CyclicBarrier {
 	private final ReentrantLock lock = new ReentrantLock();
@@ -12,6 +11,7 @@ public class CyclicBarrier {
 	private final int parties;
 	private final Runnable barrierCommand;
 	private int count;
+	private int flag;
 
 	public CyclicBarrier(int parties) {
 		this(parties, null);
@@ -28,6 +28,7 @@ public class CyclicBarrier {
 	private void nextGeneration() {
 		trip.signalAll();
 		count = parties;
+		flag++;
 	}
 
 	public int getNumberWaiting() {
@@ -47,12 +48,15 @@ public class CyclicBarrier {
 			throw new Error(toe);
 		}
 	}
+
 	private int dowait(boolean timed, long nanos)
 			throws InterruptedException, BrokenBarrierException, TimeoutException {
 		final ReentrantLock lock = this.lock;
 		lock.lock();
 		try {
-			if (Thread.interrupted()) throw new InterruptedException();
+			int f = flag;
+			if (Thread.interrupted())
+				throw new InterruptedException();
 			int index = --count;
 			if (index == 0) {
 				final Runnable command = barrierCommand;
@@ -70,7 +74,10 @@ public class CyclicBarrier {
 				} catch (InterruptedException ie) {
 					Thread.currentThread().interrupt();
 				}
-				if (timed && nanos <= 0L) throw new TimeoutException();
+				if (f != flag)
+					return index;
+				if (timed && nanos <= 0L)
+					throw new TimeoutException();
 			}
 		} finally {
 			lock.unlock();

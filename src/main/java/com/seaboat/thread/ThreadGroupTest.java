@@ -2,16 +2,17 @@ package com.seaboat.thread;
 
 public class ThreadGroupTest {
 	public static void main(String[] args) {
-		System.out.println("A´¦Ïß³Ì£º" + Thread.currentThread().getName() + ", ËùÊôÏß³Ì£º"
-				+ Thread.currentThread().getThreadGroup().getName() + ", ×éÖĞÓĞÏß³Ì×éÊıÁ¿£º"
+		System.out.println("Aå¤„çº¿ç¨‹ï¼š" + Thread.currentThread().getName() + ", æ‰€å±çº¿ç¨‹ï¼š"
+				+ Thread.currentThread().getThreadGroup().getName() + ", ç»„ä¸­æœ‰çº¿ç¨‹ç»„æ•°é‡ï¼š"
 				+ Thread.currentThread().getThreadGroup().activeGroupCount());
-		ThreadGroup group = new ThreadGroup("ĞÂµÄ×é");
-		System.out.println("B´¦Ïß³Ì£º" + Thread.currentThread().getName() + ", ËùÊôÏß³Ì£º"
-				+ Thread.currentThread().getThreadGroup().getName() + ", ×éÖĞÓĞÏß³Ì×éÊıÁ¿£º"
+		ThreadGroup group = new ThreadGroup("æ–°çš„ç»„");
+		System.out.println("Bå¤„çº¿ç¨‹ï¼š" + Thread.currentThread().getName() + ", æ‰€å±çº¿ç¨‹ï¼š"
+				+ Thread.currentThread().getThreadGroup().getName() + ", ç»„ä¸­æœ‰çº¿ç¨‹ç»„æ•°é‡ï¼š"
 				+ Thread.currentThread().getThreadGroup().activeGroupCount());
-		ThreadGroup[] tg = new ThreadGroup[Thread.currentThread().getThreadGroup().activeGroupCount()];
+		ThreadGroup[] tg = new ThreadGroup[Thread.currentThread().getThreadGroup()
+				.activeGroupCount()];
 		Thread.currentThread().getThreadGroup().enumerate(tg);
 		for (int i = 0; i < tg.length; i++)
-			System.out.println("µÚÒ»¸öÏß³Ì×éÃû³ÆÎª£º" + tg[i].getName());
+			System.out.println("ç¬¬ä¸€ä¸ªçº¿ç¨‹ç»„åç§°ä¸ºï¼š" + tg[i].getName());
 	}
 }

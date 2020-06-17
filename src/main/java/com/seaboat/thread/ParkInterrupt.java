@@ -1,6 +1,6 @@
 package com.seaboat.thread;
 
-import java.util.concurrent.locks.LockSupport;
+import com.seaboat.thread.jdk.LockSupport;
 
 public class ParkInterrupt {
 	public static void main(String[] args) {

@@ -1,7 +1,8 @@
 package com.seaboat.thread;
 
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import com.seaboat.thread.jdk.Semaphore;
 
 public class SemaphoreDemo {
 	static Semaphore semaphore = new Semaphore(5);

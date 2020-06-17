@@ -2,7 +2,8 @@ package com.seaboat.thread;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.CyclicBarrier;
+
+import com.seaboat.thread.jdk.CyclicBarrier;
 
 public class CountDownLatchVSCyclicBarrier {
 	static CyclicBarrier barrier = new CyclicBarrier(2);

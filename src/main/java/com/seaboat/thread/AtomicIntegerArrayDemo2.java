@@ -1,5 +1,7 @@
 package com.seaboat.thread;
 
+import com.seaboat.thread.jdk.AtomicIntegerArray;
+
 public class AtomicIntegerArrayDemo2 {
 
 	static AtomicIntegerArray counts = new AtomicIntegerArray(2);

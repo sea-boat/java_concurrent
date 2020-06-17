@@ -3,13 +3,13 @@ package com.seaboat.thread;
 public class TestSleep2 {
 
 	public static void main(String[] args) {
-		System.out.println("ÊÇµ±Ç°Ïß³ÌË¯Ãß3000ms");
+		System.out.println("æ˜¯å½“å‰çº¿ç¨‹ç¡çœ 3000ms");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Ë¯Ãß½áÊø");
+		System.out.println("ç¡çœ ç»“æŸ");
 	}
 
 }

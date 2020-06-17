@@ -1,28 +1,29 @@
 package com.seaboat.thread;
 
 import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
+
+import com.seaboat.thread.jdk.CyclicBarrier;
 
 public class CyclicBarrierDemo2 {
 	static CyclicBarrier barrier = new CyclicBarrier(2, new Runnable() {
 		public void run() {
-			System.out.println("ÎÒºÍÅ®ÅóÓÑ¶¼µ½·¹¹İÁË£¬¿ªÊ¼µã²Í");
+			System.out.println("æˆ‘å’Œå¥³æœ‹å‹éƒ½åˆ°é¥­é¦†äº†ï¼Œå¼€å§‹ç‚¹é¤");
 		}
 	});
 
 	public static void main(String[] args) {
 		Thread me = new Thread(() -> {
 			try {
-				System.out.println("ÎÒµ½´ï·¹¹İµÈÅ®ÅóÓÑ");
+				System.out.println("æˆ‘åˆ°è¾¾é¥­é¦†ç­‰å¥³æœ‹å‹");
 				barrier.await();
 			} catch (InterruptedException | BrokenBarrierException e) {
 			}
 		});
 		Thread girlfriend = new Thread(() -> {
 			try {
-				System.out.println("Å®ÅóÓÑ»¯×±°ëĞ¡Ê±");
+				System.out.println("å¥³æœ‹å‹åŒ–å¦†åŠå°æ—¶");
 				Thread.sleep(30 * 60 * 1000);
-				System.out.println("Å®ÅóÓÑµ½´ï·¹¹İ");
+				System.out.println("å¥³æœ‹å‹åˆ°è¾¾é¥­é¦†");
 				barrier.await();
 			} catch (InterruptedException | BrokenBarrierException e) {
 			}

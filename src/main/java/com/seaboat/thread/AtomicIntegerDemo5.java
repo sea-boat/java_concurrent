@@ -2,8 +2,6 @@ package com.seaboat.thread;
 
 import com.seaboat.thread.jdk.AtomicInteger;
 
-//import java.util.concurrent.atomic.AtomicInteger;
-
 public class AtomicIntegerDemo5 {
 
 	static AtomicInteger count = new AtomicInteger(0);
