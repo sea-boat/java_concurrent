@@ -11,7 +11,6 @@ public class ThreadSuspend {
 		try {
 			Thread.currentThread().sleep(100);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 		mt.suspend();
 		System.out.println("can you get here?");

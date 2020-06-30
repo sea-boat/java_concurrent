@@ -4,7 +4,6 @@ public class ThreadPriorityTest {
 
 	public static void main(String[] args) {
 		Thread t = new MyThread();
-		System.out.println(t.getPriority());
 		t.setPriority(10);
 		t.setName("00");
 		Thread t2 = new MyThread();

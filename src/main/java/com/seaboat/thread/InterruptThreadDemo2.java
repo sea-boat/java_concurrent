@@ -1,23 +1,20 @@
 package com.seaboat.thread;
 
-class StopThreadInterrupt extends Thread {
-	@Override
+public class InterruptThreadDemo2 extends Thread {
+
 	public void run() {
 		while (!Thread.interrupted()) {
 			System.out.println("Thread is running....");
 		}
-		System.out.println("Thread Stopped.... ");
+		System.out.println("Interrupt thread....");
 	}
-}
 
-public class StopThreadInterruptTest {
 	public static void main(String args[]) {
-		StopThreadInterrupt thread = new StopThreadInterrupt();
+		InterruptThreadDemo2 thread = new InterruptThreadDemo2();
 		thread.start();
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 		thread.interrupt();
 	}
