@@ -8,9 +8,11 @@ public class CLHLock {
 	private static Unsafe unsafe = null;
 	private static final long valueOffset;
 	private volatile CLHNode tail;
+
 	public class CLHNode {
-		private boolean isLocked = true;
+		private volatile boolean isLocked = true;
 	}
+
 	static {
 		try {
 			unsafe = getUnsafeInstance();
@@ -19,22 +21,26 @@ public class CLHLock {
 			throw new Error(ex);
 		}
 	}
+
 	public void lock(CLHNode currentThreadNode) {
 		CLHNode preNode = null;
 		for (;;) {
 			preNode = tail;
-			if (unsafe.compareAndSwapObject(this, valueOffset, tail, currentThreadNode))
+			if (unsafe.compareAndSwapObject(this, valueOffset, preNode, currentThreadNode))
 				break;
 		}
 		if (preNode != null)
-			while (preNode.isLocked) {}
+			while (preNode.isLocked) {
+			}
 	}
+
 	public void unlock(CLHNode currentThreadNode) {
 		if (!unsafe.compareAndSwapObject(this, valueOffset, currentThreadNode, null))
 			currentThreadNode.isLocked = false;
 	}
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+
+	private static Unsafe getUnsafeInstance() throws SecurityException, NoSuchFieldException,
+			IllegalArgumentException, IllegalAccessException {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);

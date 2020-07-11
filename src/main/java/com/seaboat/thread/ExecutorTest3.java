@@ -27,12 +27,13 @@ public class ExecutorTest3 {
 			for (int i = 0; i < workers.length; i++) {
 				workers[i] = new Thread(() -> {
 					while (true) {
+						Runnable task = null;
 						synchronized (taskQueue) {
-							if (!taskQueue.isEmpty()) {
-								Runnable task = taskQueue.remove(0);
-								task.run();
-							}
+							if (!taskQueue.isEmpty())
+								task = taskQueue.remove(0);
 						}
+						if (task != null)
+							task.run();
 					}
 				});
 				workers[i].start();

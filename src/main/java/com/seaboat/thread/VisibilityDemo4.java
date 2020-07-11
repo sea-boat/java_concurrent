@@ -8,4 +8,5 @@ public class VisibilityDemo4 {
 		System.out.println("step-3");
 		System.out.println("step-4");
 	}
+	
 }
