@@ -73,31 +73,31 @@ public class Exchanger<V> {
 		return (v == NULL_ITEM) ? null : (V) v;
 	}
 
-	//	private final Object arenaExchange(Object item, boolean timed, long ns) {
-	//		Node[] a = arena;
-	//		int alen = a.length;
-	//		Node p = participant.get();
-	//		for (int i = 0;;) {
-	//			int j = (i << ASHIFT) + ((1 << ASHIFT) - 1);
-	//			if (j < 0 || j >= alen)
-	//				j = alen - 1;
-	//			Node q = (Node) AA.getAcquire(a, j);
-	//			if (q != null && AA.compareAndSet(a, j, q, null)) {
-	//
-	//				//代码块一
-	//
-	//			} else if (i <= FULL && q == null) {
-	//
-	//				//代码块二
-	//				
-	//			} else {
-	//				if (i == FULL)
-	//					i = 0;
-	//				else
-	//					i = i + 1;
-	//			}
-	//		}
-	//	}
+//		private final Object arenaExchange(Object item, boolean timed, long ns) {
+//			Node[] a = arena;
+//			int alen = a.length;
+//			Node p = participant.get();
+//			for (int i = 0;;) {
+//				int j = (i << ASHIFT) + ((1 << ASHIFT) - 1);
+//				if (j < 0 || j >= alen)
+//					j = alen - 1;
+//				Node q = (Node) AA.getAcquire(a, j);
+//				if (q != null && AA.compareAndSet(a, j, q, null)) {
+//	
+//					//代码块一
+//	
+//				} else if (i <= FULL && q == null) {
+//	
+//					//代码块二
+//					
+//				} else {
+//					if (i == FULL)
+//						i = 0;
+//					else
+//						i = i + 1;
+//				}
+//			}
+//		}
 
 	private final Object arenaExchange(Object item, boolean timed, long ns) {
 		Node[] a = arena;

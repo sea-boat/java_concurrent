@@ -1,6 +1,6 @@
 package com.seaboat.thread;
 
-import java.util.concurrent.CountDownLatch;
+import com.seaboat.thread.jdk.CountDownLatch;
 
 public class CountDownLatchDemo {
 	static CountDownLatch latch = new CountDownLatch(2);

@@ -5,29 +5,32 @@ public class BankServiceWindowTest {
 		final BankServiceWindow bankServiceWindow = new BankServiceWindow();
 		Thread tom = new Thread(() -> {
 			bankServiceWindow.handle();
-			System.out.println("tom¿ªÊ¼°ìÀíÒµÎñ");
+			System.out.println("tomå¼€å§‹åŠç†ä¸šåŠ¡");
 			try {
 				Thread.currentThread().sleep(5000);
-			} catch (InterruptedException e) {}
-			System.out.println("tom½áÊø°ìÀíÒµÎñ");
+			} catch (InterruptedException e) {
+			}
+			System.out.println("tomç»“æŸåŠç†ä¸šåŠ¡");
 			bankServiceWindow.unhandle();
 		});
 		Thread jim = new Thread(() -> {
 			bankServiceWindow.handle();
-			System.out.println("jim¿ªÊ¼°ìÀíÒµÎñ");
+			System.out.println("jimå¼€å§‹åŠç†ä¸šåŠ¡");
 			try {
 				Thread.currentThread().sleep(5000);
-			} catch (InterruptedException e) {}
-			System.out.println("jim½áÊø°ìÀíÒµÎñ");
+			} catch (InterruptedException e) {
+			}
+			System.out.println("jimç»“æŸåŠç†ä¸šåŠ¡");
 			bankServiceWindow.unhandle();
 		});
 		Thread jay = new Thread(() -> {
 			bankServiceWindow.handle();
-			System.out.println("jay¿ªÊ¼°ìÀíÒµÎñ");
+			System.out.println("jayå¼€å§‹åŠç†ä¸šåŠ¡");
 			try {
 				Thread.currentThread().sleep(5000);
-			} catch (InterruptedException e) {}
-			System.out.println("jay½áÊø°ìÀíÒµÎñ");
+			} catch (InterruptedException e) {
+			}
+			System.out.println("jayç»“æŸåŠç†ä¸šåŠ¡");
 			bankServiceWindow.unhandle();
 		});
 		tom.start();

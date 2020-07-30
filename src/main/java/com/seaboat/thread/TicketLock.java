@@ -13,15 +13,16 @@ public class TicketLock {
 	static {
 		try {
 			unsafe = getUnsafeInstance();
-			ticketNumOffset = unsafe.objectFieldOffset(TicketLock.class.getDeclaredField("ticketNum"));
-			processingNumOffset = unsafe.objectFieldOffset(TicketLock.class.getDeclaredField("processingNum"));
+			ticketNumOffset = unsafe
+					.objectFieldOffset(TicketLock.class.getDeclaredField("ticketNum"));
+			processingNumOffset = unsafe
+					.objectFieldOffset(TicketLock.class.getDeclaredField("processingNum"));
 		} catch (Exception ex) {
 			throw new Error(ex);
 		}
 	}
 
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+	private static Unsafe getUnsafeInstance() throws Exception {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);

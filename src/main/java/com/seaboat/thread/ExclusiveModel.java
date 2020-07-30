@@ -17,8 +17,7 @@ public class ExclusiveModel {
 		}
 	}
 
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+	private static Unsafe getUnsafeInstance() throws Exception {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);
@@ -39,7 +38,6 @@ public class ExclusiveModel {
 	}
 
 }
-
 
 //public static void main(String[] args) {
 //	ExclusiveModel tl = new ExclusiveModel();

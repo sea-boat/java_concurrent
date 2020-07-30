@@ -17,16 +17,13 @@ public class MCSLock {
 	static {
 		try {
 			unsafe = getUnsafeInstance();
-			valueOffset = unsafe.objectFieldOffset(MCSLock.class.
-					getDeclaredField("tail"));
+			valueOffset = unsafe.objectFieldOffset(MCSLock.class.getDeclaredField("tail"));
 		} catch (Exception ex) {
 			throw new Error(ex);
 		}
 	}
 
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, 
-			IllegalArgumentException, IllegalAccessException {
+	private static Unsafe getUnsafeInstance() throws Exception {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);
@@ -36,8 +33,7 @@ public class MCSLock {
 		MCSNode predecessor = null;
 		for (;;) {
 			predecessor = tail;
-			if (unsafe.compareAndSwapObject(this, valueOffset, tail, 
-					currentThreadMcsNode))
+			if (unsafe.compareAndSwapObject(this, valueOffset, tail, currentThreadMcsNode))
 				break;
 		}
 		if (predecessor != null) {
@@ -50,8 +46,7 @@ public class MCSLock {
 	public void unlock(MCSNode currentThreadMcsNode) {
 		if (tail != currentThreadMcsNode) {
 			if (currentThreadMcsNode.next == null) {
-				if (unsafe.compareAndSwapObject(this, valueOffset, 
-						currentThreadMcsNode, null)) {
+				if (unsafe.compareAndSwapObject(this, valueOffset, currentThreadMcsNode, null)) {
 					return;
 				} else {
 					while (currentThreadMcsNode.next == null) {

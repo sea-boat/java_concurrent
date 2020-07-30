@@ -17,8 +17,7 @@ public class SharedModel {
 		}
 	}
 
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+	private static Unsafe getUnsafeInstance() throws Exception {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);
@@ -27,7 +26,8 @@ public class SharedModel {
 	public int tryAcquireShared() {
 		for (;;) {
 			int newCount = state - 1;
-			if (newCount >= 0 && unsafe.compareAndSwapInt(this, stateOffset, newCount + 1, newCount)) {
+			if (newCount >= 0
+					&& unsafe.compareAndSwapInt(this, stateOffset, newCount + 1, newCount)) {
 				return newCount;
 			}
 		}

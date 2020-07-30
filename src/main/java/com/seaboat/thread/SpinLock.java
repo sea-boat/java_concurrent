@@ -17,8 +17,7 @@ public class SpinLock {
 		}
 	}
 
-	private static Unsafe getUnsafeInstance()
-			throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+	private static Unsafe getUnsafeInstance() throws Exception {
 		Field theUnsafeInstance = Unsafe.class.getDeclaredField("theUnsafe");
 		theUnsafeInstance.setAccessible(true);
 		return (Unsafe) theUnsafeInstance.get(Unsafe.class);
