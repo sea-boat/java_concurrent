@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractOwnableSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.LockSupport;
-import java.lang.Thread;
 
 public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer {
 
@@ -730,4 +729,24 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
 		}
 	}
 
+	public final boolean hasQueuedPredecessors() {
+		Node h, s;
+		if ((h = head) != null) {
+			if ((s = h.next) == null || s.waitStatus > 0) {
+				s = null; // traverse in case of concurrent cancellation
+				for (Node p = tail; p != h && p != null; p = p.prev) {
+					if (p.waitStatus <= 0)
+						s = p;
+				}
+			}
+			if (s != null && s.thread != Thread.currentThread())
+				return true;
+		}
+		return false;
+	}
+
+	final boolean apparentlyFirstQueuedIsExclusive() {
+		Node h, s;
+		return (h = head) != null && (s = h.next) != null && !s.isShared() && s.thread != null;
+	}
 }

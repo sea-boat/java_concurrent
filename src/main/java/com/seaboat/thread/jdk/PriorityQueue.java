@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class PriorityQueue<E> {
-
 	int size;
 	transient Object[] queue;
 	private static final int DEFAULT_INITIAL_CAPACITY = 11;

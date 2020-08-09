@@ -5,7 +5,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LinkedBlockingDeque<E> implements BlockingDeque<E> {
-
 	static final class Node<E> {
 		E item;
 		Node<E> prev;

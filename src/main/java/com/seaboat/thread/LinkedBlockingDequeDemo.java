@@ -4,7 +4,6 @@ import com.seaboat.thread.jdk.BlockingDeque;
 import com.seaboat.thread.jdk.LinkedBlockingDeque;
 
 public class LinkedBlockingDequeDemo {
-
 	static BlockingDeque<String> blockingDeque = new LinkedBlockingDeque<String>();
 
 	public static void main(String[] args) throws InterruptedException {

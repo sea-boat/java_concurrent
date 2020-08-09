@@ -6,7 +6,6 @@ import com.seaboat.thread.jdk.DelayQueue;
 import com.seaboat.thread.jdk.Delayed;
 
 public class DelayQueueDemo {
-
 	static class Cache implements Delayed {
 		private String data;
 		private long endTime;
@@ -24,7 +23,6 @@ public class DelayQueueDemo {
 		public long getDelay(TimeUnit unit) {
 			return unit.convert(endTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
-
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -36,7 +34,6 @@ public class DelayQueueDemo {
 				queue.put(new Cache(datas[index], System.currentTimeMillis() + (index + 1) * 3000));
 			}).start();
 		}
-
 		for (int i = 0; i < datas.length; i++)
 			new Thread(() -> {
 				try {

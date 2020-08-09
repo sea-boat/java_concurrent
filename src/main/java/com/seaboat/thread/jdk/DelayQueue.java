@@ -7,7 +7,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class DelayQueue<E extends Delayed> implements BlockingQueue<E> {
-
 	private Thread leader;
 	private final transient ReentrantLock lock = new ReentrantLock();
 	private final Condition available = lock.newCondition();

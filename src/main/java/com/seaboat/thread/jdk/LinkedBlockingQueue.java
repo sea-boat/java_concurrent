@@ -112,6 +112,7 @@ public class LinkedBlockingQueue<E> implements BlockingQueue<E> {
 		}
 		return x;
 	}
+
 	public boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException {
 		if (e == null)
 			throw new NullPointerException();

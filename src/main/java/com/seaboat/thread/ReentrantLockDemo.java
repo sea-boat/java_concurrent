@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockDemo {
 	static ReentrantLock lock = new ReentrantLock();
+
 	public static void main(String[] args) {
 		Thread thread1 = new Thread(() -> {
 			try {
@@ -12,7 +13,8 @@ public class ReentrantLockDemo {
 				Thread.sleep(2000);
 				lock.unlock();
 				System.out.println("thread1 release the lock");
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 		});
 		Thread thread2 = new Thread(() -> {
 			try {
@@ -21,7 +23,8 @@ public class ReentrantLockDemo {
 				Thread.sleep(2000);
 				lock.unlock();
 				System.out.println("thread2 release the lock");
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 		});
 		Thread thread3 = new Thread(() -> {
 			try {
@@ -30,7 +33,8 @@ public class ReentrantLockDemo {
 				Thread.sleep(2000);
 				lock.unlock();
 				System.out.println("thread3 release the lock");
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {
+			}
 		});
 		thread1.start();
 		thread2.start();
