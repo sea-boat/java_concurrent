@@ -7,7 +7,6 @@ import com.seaboat.thread.jdk.PriorityBlockingQueue;
 public class PriorityBlockingQueueDemo2 {
 	static class Money {
 		private int value;
-
 		Money(int v) {
 			this.value = v;
 		}

@@ -19,10 +19,8 @@ public class AtomicReferenceDemo {
 	}
 
 	static class Baoshu {
-
 		public String name;
 		public int num = 0;
-
 		public String toString() {
 			return name + " : " + num;
 		}

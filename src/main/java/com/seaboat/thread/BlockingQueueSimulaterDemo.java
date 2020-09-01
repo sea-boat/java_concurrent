@@ -3,7 +3,6 @@ package com.seaboat.thread;
 import com.seaboat.thread.jdk.BlockingQueueSimulater;
 
 public class BlockingQueueSimulaterDemo {
-
 	public static void main(String[] args) throws InterruptedException {
 		BlockingQueueSimulater bq = new BlockingQueueSimulater(10);
 		new Thread(() -> {
@@ -13,8 +12,7 @@ public class BlockingQueueSimulaterDemo {
 				System.out.println("queue size : " + bq.size);
 				int size = bq.size;
 				for (int i = 0; i < size; i++)
-					System.out.println(bq.take());
-
+					System.out.print(bq.take() + "|");
 			} catch (InterruptedException e) {
 			}
 		}).start();

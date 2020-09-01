@@ -19,6 +19,14 @@ public class AtomicReferenceDemo3 {
 		}
 	}
 
+	static class Baoshu {
+		private String name;
+		private int num = 0;
+		public String toString() {
+			return name + " : " + num;
+		}
+	}
+
 	public static void main(String[] args) throws InterruptedException {
 		AtomicReferenceDemo3 demo = new AtomicReferenceDemo3();
 		String[] names = { "tom", "jack", "lucy" };
@@ -30,13 +38,4 @@ public class AtomicReferenceDemo3 {
 		Thread.sleep(3000);
 	}
 
-	static class Baoshu {
-
-		private String name;
-		private int num = 0;
-
-		public String toString() {
-			return name + " : " + num;
-		}
-	}
 }

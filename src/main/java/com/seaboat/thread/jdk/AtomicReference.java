@@ -5,6 +5,7 @@ import java.lang.invoke.VarHandle;
 
 public class AtomicReference<V> {
 	private static final VarHandle VALUE;
+	private volatile V value;
 	static {
 		try {
 			MethodHandles.Lookup l = MethodHandles.lookup();
@@ -13,8 +14,6 @@ public class AtomicReference<V> {
 			throw new Error(e);
 		}
 	}
-
-	private volatile V value;
 
 	public AtomicReference() {
 	}
